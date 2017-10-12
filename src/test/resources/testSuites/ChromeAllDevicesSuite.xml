@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Regression tests suite on Chrome (all devices)" configfailurepolicy="continue" verbose="2">
+    <parameter name="browserName" value="chrome"/>
+    <test name="Test on Chrome all devices">
+        <groups>
+            <run>
+                <include name="devices.regression"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="ua.nure.yakunina.galen"/>
+        </packages>
+    </test>
+</suite>

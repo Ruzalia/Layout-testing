@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Regression tests suite on Internet Explorer (desktop)" configfailurepolicy="continue" verbose="2">
+    <parameter name="browserName" value="internetExplorer"/>
+    <test name="Test on Internet Explorer desktop">
+        <groups>
+            <run>
+                <include name="desktop.regression"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="ua.nure.yakunina.galen"/>
+        </packages>
+    </test>
+</suite>

@@ -1,0 +1,42 @@
+# Check elements horizontal alignment and equal distance between each other
+# e.g.
+#
+#   | home_box_* are aligned horizontally next to each other with equal distance
+#
+@rule %{objectPattern} are aligned horizontally next to each other with equal distance
+    @if ${count(objectPattern) > 1}
+        @set _distance_ ${var all = findAll(objectPattern); Math.abs(all[1].left() - all[0].right())}
+        @set _distance_a ${parseInt(_distance_) - 1}
+        @set _distance_b ${parseInt(_distance_) + 1}
+        @forEach [${objectPattern}] as item, next as nextItem
+            ${item}:
+                @if ${isVisible(nextItem)}
+                    aligned horizontally all ${nextItem}
+                    left-of ${nextItem} ${_distance_a} to ${_distance_b} px
+
+# Check elements vertical alignment and equal distance between each other
+# e.g.
+#
+#   | home_box_* are aligned vertically next to each other with equal distance
+#
+@rule %{objectPattern} are aligned vertically next to each other with equal distance
+    @if ${count(objectPattern) > 1}
+        @set _distance_ ${var all = findAll(objectPattern); Math.abs(all[0].bottom() - all[1].top())}
+        @set _distance_a ${parseInt(_distance_) - 1}
+        @set _distance_b ${parseInt(_distance_) + 1}
+        @forEach [${objectPattern}] as item, next as nextItem
+            ${item}:
+                @if ${isVisible(nextItem)}
+                    aligned vertically all ${nextItem}
+                    above ${nextItem} ${_distance_a} to ${_distance_b} px
+
+# Check elements location above each other
+# e.g.
+#
+#   | home_box_* are above each other
+#
+@rule %{objectPattern} are above each other
+    @if ${count(objectPattern) > 1}
+        @forEach [${objectPattern}] as item, next as nextItem
+            ${item}:
+                above ${nextItem}

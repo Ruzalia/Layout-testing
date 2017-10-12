@@ -1,0 +1,7 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Galen Regression Tests Suite" configfailurepolicy="continue" verbose="2">
+    <suite-files>
+        <suite-file path="ChromeAllDevicesSuite.xml" />
+        <suite-file path="InternetExplorerDesktopSuite.xml" />
+    </suite-files>
+</suite>
